@@ -260,3 +260,19 @@ Senior Data Engineer | AWS Systems Engineer
 ---
 
 Built with ❤️ using React, TypeScript, and Tailwind CSS
+
+---
+
+## 🌐 Live Portfolio
+
+**Visit:** https://portfolio-theta-dun-17.vercel.app
+
+**GitHub:** https://github.com/jnanikarri7/portfolio
+
+**Last Updated:** May 15, 2026
+
+---
+
+**Built with:** React 18 • TypeScript • Tailwind CSS • Vite • Framer Motion
+
+**Deployed on:** Vercel with automatic deployments from GitHub
