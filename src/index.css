@@ -10,10 +10,22 @@
 }
 
 body {
-  background: linear-gradient(to bottom, #0a0a0a 0%, #0f0f14 50%, #0a0a0a 100%);
+  background: linear-gradient(to bottom, #0d0d0f 0%, #1a1a1f 50%, #0d0d0f 100%);
   min-height: 100vh;
   color: #ffffff;
   font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'SF Pro Display', 'Segoe UI', sans-serif;
+  position: relative;
+}
+
+body::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  background:
+    radial-gradient(circle at 20% 20%, rgba(99, 102, 241, 0.05) 0%, transparent 50%),
+    radial-gradient(circle at 80% 80%, rgba(139, 92, 246, 0.05) 0%, transparent 50%);
+  pointer-events: none;
+  z-index: 0;
 }
 
 html {
@@ -25,22 +37,25 @@ html {
   letter-spacing: -0.02em;
 }
 
-/* Custom scrollbar */
+/* Apple-style scrollbar */
 ::-webkit-scrollbar {
-  width: 4px;
+  width: 8px;
 }
 
 ::-webkit-scrollbar-track {
-  background: #0a0a0a;
+  background: rgba(255, 255, 255, 0.02);
 }
 
 ::-webkit-scrollbar-thumb {
-  background: #333;
-  border-radius: 2px;
+  background: rgba(255, 255, 255, 0.15);
+  border-radius: 10px;
+  border: 2px solid transparent;
+  background-clip: content-box;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: #555;
+  background: rgba(255, 255, 255, 0.25);
+  background-clip: content-box;
 }
 
 /* Selection */
@@ -97,17 +112,24 @@ html {
   box-shadow: 0 0 80px rgba(168, 237, 234, 0.3);
 }
 
-/* Glass card with better contrast */
+/* Glass card with Apple-style refinement */
 .glass-card {
-  background: rgba(255, 255, 255, 0.03);
-  border: 1px solid rgba(255, 255, 255, 0.1);
-  backdrop-filter: blur(20px);
-  transition: all 0.3s cubic-bezier(0.22, 1, 0.36, 1);
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.04) 0%, rgba(255, 255, 255, 0.02) 100%);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  backdrop-filter: blur(40px) saturate(180%);
+  box-shadow:
+    0 4px 24px rgba(0, 0, 0, 0.3),
+    inset 0 1px 0 rgba(255, 255, 255, 0.05);
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .glass-card:hover {
-  background: rgba(255, 255, 255, 0.05);
-  border: 1px solid rgba(255, 255, 255, 0.15);
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.06) 0%, rgba(255, 255, 255, 0.03) 100%);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  box-shadow:
+    0 8px 32px rgba(0, 0, 0, 0.4),
+    inset 0 1px 0 rgba(255, 255, 255, 0.08);
+  transform: translateY(-2px);
 }
 
 /* Hover lift */
@@ -135,4 +157,29 @@ html {
   background: linear-gradient(90deg, #667eea, #764ba2, #f093fb, #667eea);
   background-size: 300% 300%;
   animation: gradient-border 4s ease infinite;
+}
+
+/* Apple-style blob animation */
+@keyframes blob {
+  0%, 100% {
+    transform: translate(0, 0) scale(1);
+  }
+  33% {
+    transform: translate(30px, -50px) scale(1.1);
+  }
+  66% {
+    transform: translate(-20px, 20px) scale(0.9);
+  }
+}
+
+.animate-blob {
+  animation: blob 20s infinite;
+}
+
+.animation-delay-2000 {
+  animation-delay: 2s;
+}
+
+.animation-delay-4000 {
+  animation-delay: 4s;
 }

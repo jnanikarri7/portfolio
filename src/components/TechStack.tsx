@@ -69,8 +69,10 @@ const TechStack = () => {
   const isInView = useInView(ref, { once: true, margin: "-80px" });
 
   return (
-    <section id="skills" className="py-24 md:py-32">
-      <div className="max-w-[1100px] mx-auto px-6 lg:px-8">
+    <section id="skills" className="py-24 md:py-32 relative">
+      {/* Subtle section background */}
+      <div className="absolute inset-0 bg-gradient-to-b from-transparent via-purple-500/[0.02] to-transparent pointer-events-none" />
+      <div className="relative max-w-[1100px] mx-auto px-6 lg:px-8">
         <motion.div
           ref={ref}
           initial={{ opacity: 0 }}
@@ -121,36 +123,36 @@ const TechStack = () => {
             transition={{ duration: 0.6, delay: 0.8 }}
             className="mt-16 relative group"
           >
-            <div className="absolute inset-0 bg-gradient-to-br from-orange-500/20 to-amber-500/20 rounded-2xl blur-xl group-hover:blur-2xl transition-all duration-500" />
-            <div className="relative glass-card rounded-2xl p-8 md:p-10">
+            <div className="absolute inset-0 bg-gradient-to-br from-orange-500/10 to-amber-500/10 rounded-3xl blur-2xl opacity-60 group-hover:opacity-100 transition-all duration-700" />
+            <div className="relative glass-card rounded-3xl p-8 md:p-10 border border-white/[0.08]">
               <div className="flex items-start gap-6">
                 <div className="flex-shrink-0">
-                  <div className="w-14 h-14 rounded-xl bg-gradient-to-br from-orange-400 to-amber-600 flex items-center justify-center shadow-lg shadow-orange-500/50">
-                    <svg className="w-7 h-7 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <div className="w-16 h-16 rounded-2xl bg-gradient-to-br from-orange-400 to-amber-600 flex items-center justify-center shadow-2xl shadow-orange-500/30">
+                    <svg className="w-8 h-8 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4M7.835 4.697a3.42 3.42 0 001.946-.806 3.42 3.42 0 014.438 0 3.42 3.42 0 001.946.806 3.42 3.42 0 013.138 3.138 3.42 3.42 0 00.806 1.946 3.42 3.42 0 010 4.438 3.42 3.42 0 00-.806 1.946 3.42 3.42 0 01-3.138 3.138 3.42 3.42 0 00-1.946.806 3.42 3.42 0 01-4.438 0 3.42 3.42 0 00-1.946-.806 3.42 3.42 0 01-3.138-3.138 3.42 3.42 0 00-.806-1.946 3.42 3.42 0 010-4.438 3.42 3.42 0 00.806-1.946 3.42 3.42 0 013.138-3.138z" />
                     </svg>
                   </div>
                 </div>
                 <div className="flex-1">
-                  <h4 className="text-2xl font-display font-bold text-white mb-4">
+                  <h4 className="text-2xl font-display font-bold text-white mb-5">
                     AWS Certified Professional
                   </h4>
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-4 text-base text-gray-300">
                     <div className="flex items-center gap-3">
-                      <span className="w-2 h-2 rounded-full bg-gradient-to-r from-orange-400 to-amber-500 shadow-lg shadow-orange-400/50" />
-                      Solutions Architect – Professional
+                      <span className="w-2 h-2 rounded-full bg-gradient-to-r from-orange-400 to-amber-500 shadow-lg shadow-orange-400/40" />
+                      <span className="font-medium">Solutions Architect – Professional</span>
                     </div>
                     <div className="flex items-center gap-3">
-                      <span className="w-2 h-2 rounded-full bg-gradient-to-r from-orange-400 to-amber-500 shadow-lg shadow-orange-400/50" />
-                      Data Engineer – Associate
+                      <span className="w-2 h-2 rounded-full bg-gradient-to-r from-orange-400 to-amber-500 shadow-lg shadow-orange-400/40" />
+                      <span className="font-medium">Data Engineer – Associate</span>
                     </div>
                     <div className="flex items-center gap-3">
-                      <span className="w-2 h-2 rounded-full bg-gradient-to-r from-orange-400 to-amber-500 shadow-lg shadow-orange-400/50" />
-                      Solutions Architect – Associate
+                      <span className="w-2 h-2 rounded-full bg-gradient-to-r from-orange-400 to-amber-500 shadow-lg shadow-orange-400/40" />
+                      <span className="font-medium">Solutions Architect – Associate</span>
                     </div>
                     <div className="flex items-center gap-3">
-                      <span className="w-2 h-2 rounded-full bg-gradient-to-r from-orange-400 to-amber-500 shadow-lg shadow-orange-400/50" />
-                      AI Practitioner
+                      <span className="w-2 h-2 rounded-full bg-gradient-to-r from-orange-400 to-amber-500 shadow-lg shadow-orange-400/40" />
+                      <span className="font-medium">AI Practitioner</span>
                     </div>
                   </div>
                 </div>

@@ -96,8 +96,10 @@ const SelectedWork = () => {
   const isInView = useInView(ref, { once: true, margin: "-80px" });
 
   return (
-    <section id="work" className="py-24 md:py-32">
-      <div className="max-w-[1100px] mx-auto px-6 lg:px-8">
+    <section id="work" className="py-24 md:py-32 relative">
+      {/* Subtle section background */}
+      <div className="absolute inset-0 bg-gradient-to-b from-transparent via-white/[0.01] to-transparent pointer-events-none" />
+      <div className="relative max-w-[1100px] mx-auto px-6 lg:px-8">
         <motion.div
           ref={ref}
           initial={{ opacity: 0 }}

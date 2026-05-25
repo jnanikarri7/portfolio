@@ -26,7 +26,7 @@ const Navbar = () => {
     <nav
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
         isScrolled
-          ? 'bg-[#0a0a0a]/80 backdrop-blur-2xl border-b border-white/[0.1] shadow-2xl shadow-black/20'
+          ? 'bg-[#0d0d0f]/70 backdrop-blur-3xl border-b border-white/[0.08] shadow-2xl shadow-black/30'
           : 'bg-transparent'
       }`}
     >
@@ -53,7 +53,7 @@ const Navbar = () => {
               href="/resume.pdf"
               target="_blank"
               rel="noopener noreferrer"
-              className="text-sm px-5 py-2.5 rounded-lg bg-gradient-to-r from-blue-500 to-purple-600 text-white font-semibold hover:from-blue-600 hover:to-purple-700 shadow-lg shadow-blue-500/30 hover:shadow-xl hover:shadow-blue-500/40 transition-all duration-300"
+              className="text-sm px-6 py-2.5 rounded-xl bg-gradient-to-r from-blue-500 to-purple-600 text-white font-semibold hover:from-blue-600 hover:to-purple-700 shadow-lg shadow-blue-500/20 hover:shadow-xl hover:shadow-blue-500/30 transition-all duration-300 hover:scale-105"
             >
               Resume
             </a>
