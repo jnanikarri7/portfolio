@@ -35,8 +35,11 @@ const CountUp = ({ end, suffix = '', duration = 2 }: { end: number; suffix?: str
 const Hero = () => {
   return (
     <section className="min-h-[90vh] flex items-end pb-20 pt-32 relative overflow-hidden">
-      {/* Subtle radial gradient background */}
-      <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top,_rgba(255,255,255,0.03)_0%,_transparent_50%)]" />
+      {/* Vibrant gradient background */}
+      <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top,_rgba(102,126,234,0.15)_0%,_transparent_50%)]" />
+      <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_bottom_right,_rgba(168,237,234,0.1)_0%,_transparent_50%)]" />
+      <div className="absolute top-20 right-20 w-96 h-96 bg-purple-500/10 rounded-full blur-3xl" />
+      <div className="absolute bottom-20 left-20 w-96 h-96 bg-blue-500/10 rounded-full blur-3xl" />
 
       <div className="relative max-w-[1100px] mx-auto px-6 lg:px-8 w-full">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-end">
@@ -48,29 +51,33 @@ const Hero = () => {
             className="space-y-8"
           >
             {/* Availability badge */}
-            <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full border border-white/[0.08] bg-white/[0.02]">
-              <div className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse" />
-              <span className="text-[11px] text-neutral-400 tracking-wide uppercase">
+            <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full border border-emerald-500/30 bg-emerald-500/10 backdrop-blur-xl">
+              <div className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse shadow-lg shadow-emerald-400/50" />
+              <span className="text-xs text-emerald-300 tracking-wide uppercase font-medium">
                 Open to opportunities
               </span>
             </div>
 
-            <div className="space-y-4">
-              <h1 className="font-display text-6xl md:text-7xl lg:text-8xl text-white tracking-tight leading-[0.9] italic">
-                {profile.name}
+            <div className="space-y-6">
+              <h1 className="font-display text-6xl md:text-7xl lg:text-8xl font-bold tracking-tight leading-[0.95]">
+                <span className="bg-gradient-to-r from-white via-white to-gray-400 bg-clip-text text-transparent">
+                  {profile.name}
+                </span>
               </h1>
-              <p className="text-lg md:text-xl text-neutral-400 font-light tracking-tight">
-                {profile.title} <span className="text-neutral-600">·</span> {profile.location}
+              <p className="text-xl md:text-2xl font-medium tracking-tight">
+                <span className="text-white">{profile.title}</span>
+                <span className="text-gray-600 mx-3">·</span>
+                <span className="text-gray-400">{profile.location}</span>
               </p>
-              <p className="text-base md:text-lg text-neutral-500 font-light max-w-md">
-                Building production systems at 50M record scale •
-                Proven $10.5M+ cost optimization •
-                AWS & PySpark specialist
+              <p className="text-lg md:text-xl text-gray-300 font-normal max-w-md leading-relaxed">
+                Building production systems at <span className="text-blue-400 font-semibold">50M record scale</span> •
+                Proven <span className="text-green-400 font-semibold">$10.5M+ cost optimization</span> •
+                <span className="text-purple-400 font-semibold"> AWS & PySpark specialist</span>
               </p>
             </div>
 
             {/* Quick links */}
-            <div className="flex items-center gap-6">
+            <div className="flex items-center gap-4">
               {[
                 { label: 'Email', href: `mailto:${profile.email}` },
                 { label: 'LinkedIn', href: profile.linkedin },
@@ -82,7 +89,7 @@ const Hero = () => {
                   href={link.href}
                   target={link.href.startsWith('http') ? '_blank' : undefined}
                   rel={link.href.startsWith('http') ? 'noopener noreferrer' : undefined}
-                  className="text-[13px] text-neutral-500 hover:text-white transition-colors duration-300"
+                  className="text-sm px-4 py-2 rounded-lg text-gray-400 hover:text-white hover:bg-white/5 border border-white/10 hover:border-white/20 transition-all duration-300"
                 >
                   {link.label}
                 </a>
@@ -97,10 +104,10 @@ const Hero = () => {
             transition={{ duration: 0.8, delay: 0.2, ease: [0.22, 1, 0.36, 1] }}
             className="space-y-6"
           >
-            <p className="text-[17px] md:text-lg text-neutral-300 leading-[1.7] font-light">
+            <p className="text-lg md:text-xl text-gray-200 leading-[1.8] font-normal">
               {profile.hero.greeting}
             </p>
-            <p className="text-[17px] md:text-lg text-neutral-500 leading-[1.7] font-light">
+            <p className="text-lg md:text-xl text-gray-400 leading-[1.8] font-normal">
               {profile.hero.secondary}
             </p>
           </motion.div>
@@ -111,41 +118,50 @@ const Hero = () => {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.8, ease: [0.22, 1, 0.36, 1] }}
-          className="mt-20 grid grid-cols-1 md:grid-cols-3 gap-8"
+          className="mt-20 grid grid-cols-1 md:grid-cols-3 gap-6"
         >
-          <div className="space-y-2">
-            <div className="text-4xl md:text-5xl font-bold bg-gradient-to-r from-blue-400 to-blue-600 bg-clip-text text-transparent">
-              <CountUp end={50} suffix="M+" duration={2.5} />
-            </div>
-            <div className="text-sm text-neutral-500 uppercase tracking-wider">
-              Records Processed Daily
-            </div>
-            <div className="text-xs text-neutral-600">
-              Production-scale data systems
-            </div>
-          </div>
-
-          <div className="space-y-2">
-            <div className="text-4xl md:text-5xl font-bold bg-gradient-to-r from-green-400 to-emerald-600 bg-clip-text text-transparent">
-              $<CountUp end={10.5} suffix="M" duration={2.5} />
-            </div>
-            <div className="text-sm text-neutral-500 uppercase tracking-wider">
-              Annual Cost Savings
-            </div>
-            <div className="text-xs text-neutral-600">
-              Through optimization strategies
+          <div className="relative group">
+            <div className="absolute inset-0 bg-gradient-to-br from-blue-500/20 to-purple-500/20 rounded-2xl blur-xl group-hover:blur-2xl transition-all duration-500" />
+            <div className="relative glass-card rounded-2xl p-8 space-y-3">
+              <div className="text-5xl md:text-6xl font-bold bg-gradient-to-r from-blue-400 via-blue-500 to-purple-500 bg-clip-text text-transparent">
+                <CountUp end={50} suffix="M+" duration={2.5} />
+              </div>
+              <div className="text-sm text-gray-300 uppercase tracking-wider font-semibold">
+                Records Processed Daily
+              </div>
+              <div className="text-xs text-gray-500">
+                Production-scale data systems
+              </div>
             </div>
           </div>
 
-          <div className="space-y-2">
-            <div className="text-4xl md:text-5xl font-bold bg-gradient-to-r from-purple-400 to-purple-600 bg-clip-text text-transparent">
-              <CountUp end={99.996} suffix="%" duration={2.5} />
+          <div className="relative group">
+            <div className="absolute inset-0 bg-gradient-to-br from-green-500/20 to-emerald-500/20 rounded-2xl blur-xl group-hover:blur-2xl transition-all duration-500" />
+            <div className="relative glass-card rounded-2xl p-8 space-y-3">
+              <div className="text-5xl md:text-6xl font-bold bg-gradient-to-r from-green-400 via-emerald-500 to-teal-500 bg-clip-text text-transparent">
+                $<CountUp end={10.5} suffix="M" duration={2.5} />
+              </div>
+              <div className="text-sm text-gray-300 uppercase tracking-wider font-semibold">
+                Annual Cost Savings
+              </div>
+              <div className="text-xs text-gray-500">
+                Through optimization strategies
+              </div>
             </div>
-            <div className="text-sm text-neutral-500 uppercase tracking-wider">
-              Performance Optimization
-            </div>
-            <div className="text-xs text-neutral-600">
-              Comparison reduction (O(n²) → O(n))
+          </div>
+
+          <div className="relative group">
+            <div className="absolute inset-0 bg-gradient-to-br from-purple-500/20 to-pink-500/20 rounded-2xl blur-xl group-hover:blur-2xl transition-all duration-500" />
+            <div className="relative glass-card rounded-2xl p-8 space-y-3">
+              <div className="text-5xl md:text-6xl font-bold bg-gradient-to-r from-purple-400 via-pink-500 to-rose-500 bg-clip-text text-transparent">
+                <CountUp end={99.996} suffix="%" duration={2.5} />
+              </div>
+              <div className="text-sm text-gray-300 uppercase tracking-wider font-semibold">
+                Performance Optimization
+              </div>
+              <div className="text-xs text-gray-500">
+                Comparison reduction (O(n²) → O(n))
+              </div>
             </div>
           </div>
         </motion.div>

@@ -26,7 +26,7 @@ const Navbar = () => {
     <nav
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
         isScrolled
-          ? 'bg-[#0a0a0a]/70 backdrop-blur-2xl border-b border-white/[0.04]'
+          ? 'bg-[#0a0a0a]/80 backdrop-blur-2xl border-b border-white/[0.1] shadow-2xl shadow-black/20'
           : 'bg-transparent'
       }`}
     >
@@ -34,17 +34,17 @@ const Navbar = () => {
         <div className="flex items-center justify-between h-16">
           <button
             onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
-            className="text-[13px] font-medium text-white/90 hover:text-white transition-colors tracking-tight"
+            className="text-sm font-bold text-white hover:text-gray-300 transition-colors tracking-tight"
           >
             {profile.name}
           </button>
 
-          <div className="hidden md:flex items-center gap-8">
+          <div className="hidden md:flex items-center gap-6">
             {['work', 'skills', 'experience', 'contact'].map((section) => (
               <button
                 key={section}
                 onClick={() => scrollToSection(section)}
-                className="text-[13px] text-neutral-400 hover:text-white transition-colors duration-300 capitalize"
+                className="text-sm font-medium text-gray-400 hover:text-white transition-colors duration-300 capitalize"
               >
                 {section}
               </button>
@@ -53,7 +53,7 @@ const Navbar = () => {
               href="/resume.pdf"
               target="_blank"
               rel="noopener noreferrer"
-              className="text-[13px] px-4 py-2 rounded-full bg-white/[0.05] border border-white/[0.1] text-white hover:bg-white/[0.08] hover:border-white/[0.15] transition-all duration-300"
+              className="text-sm px-5 py-2.5 rounded-lg bg-gradient-to-r from-blue-500 to-purple-600 text-white font-semibold hover:from-blue-600 hover:to-purple-700 shadow-lg shadow-blue-500/30 hover:shadow-xl hover:shadow-blue-500/40 transition-all duration-300"
             >
               Resume
             </a>

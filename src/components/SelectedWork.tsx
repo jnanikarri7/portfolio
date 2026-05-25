@@ -32,30 +32,30 @@ const WorkItem = ({ work, index }: { work: typeof profile.selectedWork[0]; index
       <ArticleWrapper {...articleProps}>
         {/* Top row */}
         <div className="flex items-start justify-between mb-8">
-          <div className="space-y-1">
-            <span className="text-[11px] text-neutral-500 uppercase tracking-widest font-medium">
+          <div className="space-y-2">
+            <span className="text-xs text-gray-400 uppercase tracking-widest font-semibold">
               {work.year}
             </span>
-            <h3 className="text-2xl md:text-3xl font-display italic text-white tracking-tight">
+            <h3 className="text-3xl md:text-4xl font-display font-bold text-white tracking-tight">
               {work.title}
             </h3>
           </div>
           {work.github && (
-            <div className="w-10 h-10 rounded-full border border-white/[0.08] flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-              <ArrowUpRight size={16} className="text-neutral-400" />
+            <div className="w-12 h-12 rounded-xl border border-white/[0.15] bg-white/[0.05] flex items-center justify-center opacity-0 group-hover:opacity-100 transition-all duration-300 group-hover:border-blue-400/50">
+              <ArrowUpRight size={18} className="text-gray-300 group-hover:text-blue-400 transition-colors" />
             </div>
           )}
         </div>
 
       {/* Subtitle */}
-      <p className="text-base text-neutral-300 font-medium mb-6">
+      <p className="text-lg text-gray-200 font-semibold mb-6">
         {work.subtitle}
       </p>
 
       {/* Description */}
       <div className="space-y-4 mb-8">
         {work.description.map((paragraph, idx) => (
-          <p key={idx} className="text-[15px] text-neutral-500 leading-[1.7]">
+          <p key={idx} className="text-base text-gray-300 leading-[1.8]">
             {paragraph}
           </p>
         ))}
@@ -76,11 +76,11 @@ const WorkItem = ({ work, index }: { work: typeof profile.selectedWork[0]; index
       )}
 
       {/* Tech Stack */}
-      <div className="flex flex-wrap gap-2 pt-6 border-t border-white/[0.04]">
+      <div className="flex flex-wrap gap-2 pt-6 border-t border-white/[0.08]">
         {work.tech.map((tech) => (
           <span
             key={tech}
-            className="text-[11px] text-neutral-400 px-3 py-1.5 rounded-full bg-white/[0.03] border border-white/[0.06] tracking-wide"
+            className="text-xs font-medium text-gray-300 px-4 py-2 rounded-lg bg-white/[0.05] border border-white/[0.1] hover:border-white/[0.2] hover:bg-white/[0.08] transition-all duration-300"
           >
             {tech}
           </span>
@@ -106,10 +106,10 @@ const SelectedWork = () => {
         >
           {/* Section header */}
           <div className="flex items-baseline justify-between mb-16">
-            <h2 className="font-display text-4xl md:text-5xl italic text-white tracking-tight">
+            <h2 className="font-display text-5xl md:text-6xl font-bold text-white tracking-tight">
               Selected work
             </h2>
-            <span className="hidden md:block text-[12px] text-neutral-600 tracking-wide">
+            <span className="hidden md:block text-sm text-gray-400 tracking-wide font-semibold">
               {profile.selectedWork.length} PROJECTS
             </span>
           </div>

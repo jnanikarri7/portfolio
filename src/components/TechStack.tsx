@@ -4,31 +4,31 @@ import { useRef } from 'react';
 
 const techStack = [
   // Cloud & AWS
-  { name: 'AWS Glue', level: 95, category: 'Cloud & AWS', color: 'from-orange-400 to-orange-600' },
-  { name: 'S3', level: 95, category: 'Cloud & AWS', color: 'from-orange-400 to-orange-600' },
-  { name: 'Redshift', level: 90, category: 'Cloud & AWS', color: 'from-orange-400 to-orange-600' },
-  { name: 'Lambda', level: 85, category: 'Cloud & AWS', color: 'from-orange-400 to-orange-600' },
-  { name: 'Step Functions', level: 85, category: 'Cloud & AWS', color: 'from-orange-400 to-orange-600' },
-  { name: 'Athena', level: 90, category: 'Cloud & AWS', color: 'from-orange-400 to-orange-600' },
+  { name: 'AWS Glue', level: 95, category: 'Cloud & AWS', color: 'from-orange-400 via-orange-500 to-amber-600' },
+  { name: 'S3', level: 95, category: 'Cloud & AWS', color: 'from-orange-400 via-orange-500 to-amber-600' },
+  { name: 'Redshift', level: 90, category: 'Cloud & AWS', color: 'from-orange-400 via-orange-500 to-amber-600' },
+  { name: 'Lambda', level: 85, category: 'Cloud & AWS', color: 'from-orange-400 via-orange-500 to-amber-600' },
+  { name: 'Step Functions', level: 85, category: 'Cloud & AWS', color: 'from-orange-400 via-orange-500 to-amber-600' },
+  { name: 'Athena', level: 90, category: 'Cloud & AWS', color: 'from-orange-400 via-orange-500 to-amber-600' },
 
   // Data Engineering
-  { name: 'PySpark', level: 95, category: 'Data Engineering', color: 'from-blue-400 to-blue-600' },
-  { name: 'Python', level: 95, category: 'Data Engineering', color: 'from-blue-400 to-blue-600' },
-  { name: 'SQL', level: 90, category: 'Data Engineering', color: 'from-blue-400 to-blue-600' },
-  { name: 'Apache Iceberg', level: 85, category: 'Data Engineering', color: 'from-blue-400 to-blue-600' },
-  { name: 'ETL/ELT', level: 95, category: 'Data Engineering', color: 'from-blue-400 to-blue-600' },
+  { name: 'PySpark', level: 95, category: 'Data Engineering', color: 'from-blue-400 via-blue-500 to-cyan-600' },
+  { name: 'Python', level: 95, category: 'Data Engineering', color: 'from-blue-400 via-blue-500 to-cyan-600' },
+  { name: 'SQL', level: 90, category: 'Data Engineering', color: 'from-blue-400 via-blue-500 to-cyan-600' },
+  { name: 'Apache Iceberg', level: 85, category: 'Data Engineering', color: 'from-blue-400 via-blue-500 to-cyan-600' },
+  { name: 'ETL/ELT', level: 95, category: 'Data Engineering', color: 'from-blue-400 via-blue-500 to-cyan-600' },
 
   // Data Quality & ML
-  { name: 'Entity Resolution', level: 90, category: 'AI/ML', color: 'from-purple-400 to-purple-600' },
-  { name: 'Splink', level: 85, category: 'AI/ML', color: 'from-purple-400 to-purple-600' },
-  { name: 'Data Quality', level: 90, category: 'AI/ML', color: 'from-purple-400 to-purple-600' },
-  { name: 'Probabilistic Matching', level: 85, category: 'AI/ML', color: 'from-purple-400 to-purple-600' },
+  { name: 'Entity Resolution', level: 90, category: 'AI/ML', color: 'from-purple-400 via-purple-500 to-pink-600' },
+  { name: 'Splink', level: 85, category: 'AI/ML', color: 'from-purple-400 via-purple-500 to-pink-600' },
+  { name: 'Data Quality', level: 90, category: 'AI/ML', color: 'from-purple-400 via-purple-500 to-pink-600' },
+  { name: 'Probabilistic Matching', level: 85, category: 'AI/ML', color: 'from-purple-400 via-purple-500 to-pink-600' },
 
   // DevOps & Tools
-  { name: 'Git', level: 90, category: 'DevOps', color: 'from-green-400 to-green-600' },
-  { name: 'CI/CD', level: 85, category: 'DevOps', color: 'from-green-400 to-green-600' },
-  { name: 'Terraform', level: 75, category: 'DevOps', color: 'from-green-400 to-green-600' },
-  { name: 'Docker', level: 80, category: 'DevOps', color: 'from-green-400 to-green-600' },
+  { name: 'Git', level: 90, category: 'DevOps', color: 'from-green-400 via-emerald-500 to-teal-600' },
+  { name: 'CI/CD', level: 85, category: 'DevOps', color: 'from-green-400 via-emerald-500 to-teal-600' },
+  { name: 'Terraform', level: 75, category: 'DevOps', color: 'from-green-400 via-emerald-500 to-teal-600' },
+  { name: 'Docker', level: 80, category: 'DevOps', color: 'from-green-400 via-emerald-500 to-teal-600' },
 ];
 
 const categories = Array.from(new Set(techStack.map(t => t.category)));
@@ -46,15 +46,18 @@ const SkillBar = ({ skill, index }: { skill: typeof techStack[0]; index: number 
       className="space-y-2"
     >
       <div className="flex justify-between items-baseline">
-        <span className="text-sm text-neutral-300">{skill.name}</span>
-        <span className="text-xs text-neutral-500">{skill.level}%</span>
+        <span className="text-sm font-medium text-gray-200">{skill.name}</span>
+        <span className="text-xs font-semibold text-gray-400">{skill.level}%</span>
       </div>
-      <div className="h-1.5 bg-white/[0.05] rounded-full overflow-hidden">
+      <div className="h-2 bg-white/[0.08] rounded-full overflow-hidden backdrop-blur-sm">
         <motion.div
           initial={{ width: 0 }}
           animate={isInView ? { width: `${skill.level}%` } : { width: 0 }}
           transition={{ duration: 1, delay: index * 0.05, ease: [0.22, 1, 0.36, 1] }}
-          className={`h-full bg-gradient-to-r ${skill.color} rounded-full`}
+          className={`h-full bg-gradient-to-r ${skill.color} rounded-full shadow-lg`}
+          style={{
+            boxShadow: '0 0 20px rgba(139, 92, 246, 0.3)'
+          }}
         />
       </div>
     </motion.div>
@@ -76,12 +79,12 @@ const TechStack = () => {
         >
           {/* Section header */}
           <div className="mb-16">
-            <h2 className="font-display text-4xl md:text-5xl italic text-white tracking-tight mb-4">
+            <h2 className="font-display text-5xl md:text-6xl font-bold text-white tracking-tight mb-6">
               Technical Expertise
             </h2>
-            <p className="text-neutral-500 max-w-2xl">
+            <p className="text-xl text-gray-300 max-w-2xl leading-relaxed">
               7+ years building production-scale data systems on AWS with PySpark,
-              specializing in lakehouse architecture and data quality automation.
+              specializing in <span className="text-blue-400 font-semibold">lakehouse architecture</span> and <span className="text-purple-400 font-semibold">data quality automation</span>.
             </p>
           </div>
 
@@ -93,8 +96,8 @@ const TechStack = () => {
 
               return (
                 <div key={category} className="space-y-6">
-                  <h3 className="text-lg font-medium text-neutral-400 flex items-center gap-3">
-                    <span className={`w-2 h-2 rounded-full bg-gradient-to-r ${categorySkills[0].color}`} />
+                  <h3 className="text-xl font-semibold text-gray-200 flex items-center gap-3">
+                    <span className={`w-3 h-3 rounded-full bg-gradient-to-r ${categorySkills[0].color} shadow-lg`} />
                     {category}
                   </h3>
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
@@ -116,36 +119,39 @@ const TechStack = () => {
             initial={{ opacity: 0, y: 20 }}
             animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
             transition={{ duration: 0.6, delay: 0.8 }}
-            className="mt-16 glass-card rounded-2xl p-8 md:p-10"
+            className="mt-16 relative group"
           >
-            <div className="flex items-start gap-6">
-              <div className="flex-shrink-0">
-                <div className="w-12 h-12 rounded-full bg-gradient-to-br from-orange-400/20 to-orange-600/20 flex items-center justify-center">
-                  <svg className="w-6 h-6 text-orange-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4M7.835 4.697a3.42 3.42 0 001.946-.806 3.42 3.42 0 014.438 0 3.42 3.42 0 001.946.806 3.42 3.42 0 013.138 3.138 3.42 3.42 0 00.806 1.946 3.42 3.42 0 010 4.438 3.42 3.42 0 00-.806 1.946 3.42 3.42 0 01-3.138 3.138 3.42 3.42 0 00-1.946.806 3.42 3.42 0 01-4.438 0 3.42 3.42 0 00-1.946-.806 3.42 3.42 0 01-3.138-3.138 3.42 3.42 0 00-.806-1.946 3.42 3.42 0 010-4.438 3.42 3.42 0 00.806-1.946 3.42 3.42 0 013.138-3.138z" />
-                  </svg>
+            <div className="absolute inset-0 bg-gradient-to-br from-orange-500/20 to-amber-500/20 rounded-2xl blur-xl group-hover:blur-2xl transition-all duration-500" />
+            <div className="relative glass-card rounded-2xl p-8 md:p-10">
+              <div className="flex items-start gap-6">
+                <div className="flex-shrink-0">
+                  <div className="w-14 h-14 rounded-xl bg-gradient-to-br from-orange-400 to-amber-600 flex items-center justify-center shadow-lg shadow-orange-500/50">
+                    <svg className="w-7 h-7 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4M7.835 4.697a3.42 3.42 0 001.946-.806 3.42 3.42 0 014.438 0 3.42 3.42 0 001.946.806 3.42 3.42 0 013.138 3.138 3.42 3.42 0 00.806 1.946 3.42 3.42 0 010 4.438 3.42 3.42 0 00-.806 1.946 3.42 3.42 0 01-3.138 3.138 3.42 3.42 0 00-1.946.806 3.42 3.42 0 01-4.438 0 3.42 3.42 0 00-1.946-.806 3.42 3.42 0 01-3.138-3.138 3.42 3.42 0 00-.806-1.946 3.42 3.42 0 010-4.438 3.42 3.42 0 00.806-1.946 3.42 3.42 0 013.138-3.138z" />
+                    </svg>
+                  </div>
                 </div>
-              </div>
-              <div className="flex-1">
-                <h4 className="text-xl font-display italic text-white mb-3">
-                  AWS Certified Professional
-                </h4>
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-3 text-sm text-neutral-400">
-                  <div className="flex items-center gap-2">
-                    <span className="w-1.5 h-1.5 rounded-full bg-orange-400" />
-                    Solutions Architect – Professional
-                  </div>
-                  <div className="flex items-center gap-2">
-                    <span className="w-1.5 h-1.5 rounded-full bg-orange-400" />
-                    Data Engineer – Associate
-                  </div>
-                  <div className="flex items-center gap-2">
-                    <span className="w-1.5 h-1.5 rounded-full bg-orange-400" />
-                    Solutions Architect – Associate
-                  </div>
-                  <div className="flex items-center gap-2">
-                    <span className="w-1.5 h-1.5 rounded-full bg-orange-400" />
-                    AI Practitioner
+                <div className="flex-1">
+                  <h4 className="text-2xl font-display font-bold text-white mb-4">
+                    AWS Certified Professional
+                  </h4>
+                  <div className="grid grid-cols-1 md:grid-cols-2 gap-4 text-base text-gray-300">
+                    <div className="flex items-center gap-3">
+                      <span className="w-2 h-2 rounded-full bg-gradient-to-r from-orange-400 to-amber-500 shadow-lg shadow-orange-400/50" />
+                      Solutions Architect – Professional
+                    </div>
+                    <div className="flex items-center gap-3">
+                      <span className="w-2 h-2 rounded-full bg-gradient-to-r from-orange-400 to-amber-500 shadow-lg shadow-orange-400/50" />
+                      Data Engineer – Associate
+                    </div>
+                    <div className="flex items-center gap-3">
+                      <span className="w-2 h-2 rounded-full bg-gradient-to-r from-orange-400 to-amber-500 shadow-lg shadow-orange-400/50" />
+                      Solutions Architect – Associate
+                    </div>
+                    <div className="flex items-center gap-3">
+                      <span className="w-2 h-2 rounded-full bg-gradient-to-r from-orange-400 to-amber-500 shadow-lg shadow-orange-400/50" />
+                      AI Practitioner
+                    </div>
                   </div>
                 </div>
               </div>
