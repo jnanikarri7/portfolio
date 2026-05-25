@@ -46,18 +46,15 @@ const SkillBar = ({ skill, index }: { skill: typeof techStack[0]; index: number 
       className="space-y-2"
     >
       <div className="flex justify-between items-baseline">
-        <span className="text-sm font-medium text-gray-200">{skill.name}</span>
-        <span className="text-xs font-semibold text-gray-400">{skill.level}%</span>
+        <span className="text-sm font-medium text-gray-700">{skill.name}</span>
+        <span className="text-xs font-semibold text-gray-500">{skill.level}%</span>
       </div>
-      <div className="h-2 bg-white/[0.08] rounded-full overflow-hidden backdrop-blur-sm">
+      <div className="h-2 bg-gray-200 rounded-full overflow-hidden">
         <motion.div
           initial={{ width: 0 }}
           animate={isInView ? { width: `${skill.level}%` } : { width: 0 }}
           transition={{ duration: 1, delay: index * 0.05, ease: [0.22, 1, 0.36, 1] }}
-          className={`h-full bg-gradient-to-r ${skill.color} rounded-full shadow-lg`}
-          style={{
-            boxShadow: '0 0 20px rgba(139, 92, 246, 0.3)'
-          }}
+          className={`h-full bg-gradient-to-r ${skill.color} rounded-full`}
         />
       </div>
     </motion.div>
@@ -69,9 +66,7 @@ const TechStack = () => {
   const isInView = useInView(ref, { once: true, margin: "-80px" });
 
   return (
-    <section id="skills" className="py-24 md:py-32 relative">
-      {/* Subtle section background */}
-      <div className="absolute inset-0 bg-gradient-to-b from-transparent via-purple-500/[0.02] to-transparent pointer-events-none" />
+    <section id="skills" className="py-24 md:py-32 relative bg-gray-50">
       <div className="relative max-w-[1100px] mx-auto px-6 lg:px-8">
         <motion.div
           ref={ref}
@@ -80,13 +75,12 @@ const TechStack = () => {
           transition={{ duration: 0.6 }}
         >
           {/* Section header */}
-          <div className="mb-16">
-            <h2 className="font-display text-5xl md:text-6xl font-bold text-white tracking-tight mb-6">
+          <div className="mb-16 text-center">
+            <h2 className="font-display text-4xl md:text-5xl font-bold text-gray-900 tracking-tight mb-4">
               Technical Expertise
             </h2>
-            <p className="text-xl text-gray-300 max-w-2xl leading-relaxed">
-              7+ years building production-scale data systems on AWS with PySpark,
-              specializing in <span className="text-blue-400 font-semibold">lakehouse architecture</span> and <span className="text-purple-400 font-semibold">data quality automation</span>.
+            <p className="text-lg text-gray-600 max-w-2xl mx-auto leading-relaxed">
+              7+ years building production-scale data systems with AWS and PySpark
             </p>
           </div>
 
@@ -98,8 +92,8 @@ const TechStack = () => {
 
               return (
                 <div key={category} className="space-y-6">
-                  <h3 className="text-xl font-semibold text-gray-200 flex items-center gap-3">
-                    <span className={`w-3 h-3 rounded-full bg-gradient-to-r ${categorySkills[0].color} shadow-lg`} />
+                  <h3 className="text-lg font-semibold text-gray-800 flex items-center gap-3">
+                    <span className={`w-3 h-3 rounded-full bg-gradient-to-r ${categorySkills[0].color}`} />
                     {category}
                   </h3>
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
@@ -116,49 +110,6 @@ const TechStack = () => {
             })}
           </div>
 
-          {/* Certifications callout */}
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
-            transition={{ duration: 0.6, delay: 0.8 }}
-            className="mt-16 relative group"
-          >
-            <div className="absolute inset-0 bg-gradient-to-br from-orange-500/10 to-amber-500/10 rounded-3xl blur-2xl opacity-60 group-hover:opacity-100 transition-all duration-700" />
-            <div className="relative glass-card rounded-3xl p-8 md:p-10 border border-white/[0.08]">
-              <div className="flex items-start gap-6">
-                <div className="flex-shrink-0">
-                  <div className="w-16 h-16 rounded-2xl bg-gradient-to-br from-orange-400 to-amber-600 flex items-center justify-center shadow-2xl shadow-orange-500/30">
-                    <svg className="w-8 h-8 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4M7.835 4.697a3.42 3.42 0 001.946-.806 3.42 3.42 0 014.438 0 3.42 3.42 0 001.946.806 3.42 3.42 0 013.138 3.138 3.42 3.42 0 00.806 1.946 3.42 3.42 0 010 4.438 3.42 3.42 0 00-.806 1.946 3.42 3.42 0 01-3.138 3.138 3.42 3.42 0 00-1.946.806 3.42 3.42 0 01-4.438 0 3.42 3.42 0 00-1.946-.806 3.42 3.42 0 01-3.138-3.138 3.42 3.42 0 00-.806-1.946 3.42 3.42 0 010-4.438 3.42 3.42 0 00.806-1.946 3.42 3.42 0 013.138-3.138z" />
-                    </svg>
-                  </div>
-                </div>
-                <div className="flex-1">
-                  <h4 className="text-2xl font-display font-bold text-white mb-5">
-                    AWS Certified Professional
-                  </h4>
-                  <div className="grid grid-cols-1 md:grid-cols-2 gap-4 text-base text-gray-300">
-                    <div className="flex items-center gap-3">
-                      <span className="w-2 h-2 rounded-full bg-gradient-to-r from-orange-400 to-amber-500 shadow-lg shadow-orange-400/40" />
-                      <span className="font-medium">Solutions Architect – Professional</span>
-                    </div>
-                    <div className="flex items-center gap-3">
-                      <span className="w-2 h-2 rounded-full bg-gradient-to-r from-orange-400 to-amber-500 shadow-lg shadow-orange-400/40" />
-                      <span className="font-medium">Data Engineer – Associate</span>
-                    </div>
-                    <div className="flex items-center gap-3">
-                      <span className="w-2 h-2 rounded-full bg-gradient-to-r from-orange-400 to-amber-500 shadow-lg shadow-orange-400/40" />
-                      <span className="font-medium">Solutions Architect – Associate</span>
-                    </div>
-                    <div className="flex items-center gap-3">
-                      <span className="w-2 h-2 rounded-full bg-gradient-to-r from-orange-400 to-amber-500 shadow-lg shadow-orange-400/40" />
-                      <span className="font-medium">AI Practitioner</span>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </motion.div>
         </motion.div>
       </div>
     </section>

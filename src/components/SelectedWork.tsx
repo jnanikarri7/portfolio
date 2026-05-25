@@ -3,10 +3,6 @@ import { useInView } from 'framer-motion';
 import { useRef } from 'react';
 import { profile } from '../data/profile';
 import { ArrowUpRight } from 'lucide-react';
-import { CostSavingsChart } from './charts/CostSavingsChart';
-import { PerformanceChart } from './charts/PerformanceChart';
-import { EntityResolutionDiagram } from './diagrams/EntityResolutionDiagram';
-import { AddressValidationDiagram } from './diagrams/AddressValidationDiagram';
 
 const WorkItem = ({ work, index }: { work: typeof profile.selectedWork[0]; index: number }) => {
   const ref = useRef(null);
@@ -31,56 +27,37 @@ const WorkItem = ({ work, index }: { work: typeof profile.selectedWork[0]; index
     >
       <ArticleWrapper {...articleProps}>
         {/* Top row */}
-        <div className="flex items-start justify-between mb-8">
+        <div className="flex items-start justify-between mb-6">
           <div className="space-y-2">
-            <span className="text-xs text-gray-400 uppercase tracking-widest font-semibold">
-              {work.year}
-            </span>
-            <h3 className="text-3xl md:text-4xl font-display font-bold text-white tracking-tight">
+            <h3 className="text-2xl md:text-3xl font-display font-bold text-gray-900 tracking-tight">
               {work.title}
             </h3>
           </div>
           {work.github && (
-            <div className="w-12 h-12 rounded-xl border border-white/[0.15] bg-white/[0.05] flex items-center justify-center opacity-0 group-hover:opacity-100 transition-all duration-300 group-hover:border-blue-400/50">
-              <ArrowUpRight size={18} className="text-gray-300 group-hover:text-blue-400 transition-colors" />
+            <div className="w-10 h-10 rounded-xl border border-gray-200 bg-gray-50 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-all duration-300 group-hover:border-blue-500">
+              <ArrowUpRight size={18} className="text-gray-600 group-hover:text-blue-600 transition-colors" />
             </div>
           )}
         </div>
 
       {/* Subtitle */}
-      <p className="text-lg text-gray-200 font-semibold mb-6">
+      <p className="text-base text-gray-700 font-medium mb-6">
         {work.subtitle}
       </p>
 
-      {/* Description */}
-      <div className="space-y-4 mb-8">
-        {work.description.map((paragraph, idx) => (
-          <p key={idx} className="text-base text-gray-300 leading-[1.8]">
-            {paragraph}
-          </p>
-        ))}
+      {/* Description - show only first paragraph */}
+      <div className="mb-6">
+        <p className="text-base text-gray-600 leading-[1.8]">
+          {work.description[0]}
+        </p>
       </div>
 
-      {/* Visual Diagrams and Charts */}
-      {work.id === 'entity-resolution' && (
-        <>
-          <EntityResolutionDiagram />
-          <PerformanceChart />
-        </>
-      )}
-      {work.id === 'address-validation' && (
-        <>
-          <AddressValidationDiagram />
-          <CostSavingsChart />
-        </>
-      )}
-
       {/* Tech Stack */}
-      <div className="flex flex-wrap gap-2 pt-6 border-t border-white/[0.08]">
-        {work.tech.map((tech) => (
+      <div className="flex flex-wrap gap-2 pt-6 border-t border-gray-100">
+        {work.tech.slice(0, 6).map((tech) => (
           <span
             key={tech}
-            className="text-xs font-medium text-gray-300 px-4 py-2 rounded-lg bg-white/[0.05] border border-white/[0.1] hover:border-white/[0.2] hover:bg-white/[0.08] transition-all duration-300"
+            className="text-xs font-medium text-gray-700 px-3 py-1.5 rounded-lg bg-gray-100 border border-gray-200"
           >
             {tech}
           </span>
@@ -96,9 +73,7 @@ const SelectedWork = () => {
   const isInView = useInView(ref, { once: true, margin: "-80px" });
 
   return (
-    <section id="work" className="py-24 md:py-32 relative">
-      {/* Subtle section background */}
-      <div className="absolute inset-0 bg-gradient-to-b from-transparent via-white/[0.01] to-transparent pointer-events-none" />
+    <section id="work" className="py-24 md:py-32 relative bg-white">
       <div className="relative max-w-[1100px] mx-auto px-6 lg:px-8">
         <motion.div
           ref={ref}
@@ -107,13 +82,11 @@ const SelectedWork = () => {
           transition={{ duration: 0.6 }}
         >
           {/* Section header */}
-          <div className="flex items-baseline justify-between mb-16">
-            <h2 className="font-display text-5xl md:text-6xl font-bold text-white tracking-tight">
-              Selected work
+          <div className="text-center mb-16">
+            <h2 className="font-display text-4xl md:text-5xl font-bold text-gray-900 tracking-tight mb-4">
+              Selected Projects
             </h2>
-            <span className="hidden md:block text-sm text-gray-400 tracking-wide font-semibold">
-              {profile.selectedWork.length} PROJECTS
-            </span>
+            <p className="text-lg text-gray-600">Production systems at scale</p>
           </div>
 
           {/* Work grid */}
