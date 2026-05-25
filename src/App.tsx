@@ -1,5 +1,6 @@
 import Hero from './components/Hero';
 import SelectedWork from './components/SelectedWork';
+import TechStack from './components/TechStack';
 import Experience from './components/Experience';
 import Contact from './components/Contact';
 import Navbar from './components/Navbar';
@@ -12,6 +13,7 @@ function App() {
       <main>
         <Hero />
         <SelectedWork />
+        <TechStack />
         <Experience />
         <Contact />
       </main>

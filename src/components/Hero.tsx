@@ -1,5 +1,36 @@
 import { motion } from 'framer-motion';
+import { useInView } from 'framer-motion';
+import { useRef, useEffect, useState } from 'react';
 import { profile } from '../data/profile';
+
+const CountUp = ({ end, suffix = '', duration = 2 }: { end: number; suffix?: string; duration?: number }) => {
+  const [count, setCount] = useState(0);
+  const ref = useRef(null);
+  const isInView = useInView(ref, { once: true });
+
+  useEffect(() => {
+    if (!isInView) return;
+
+    let startTime: number;
+    let animationFrame: number;
+
+    const animate = (currentTime: number) => {
+      if (!startTime) startTime = currentTime;
+      const progress = Math.min((currentTime - startTime) / (duration * 1000), 1);
+
+      setCount(Math.floor(progress * end));
+
+      if (progress < 1) {
+        animationFrame = requestAnimationFrame(animate);
+      }
+    };
+
+    animationFrame = requestAnimationFrame(animate);
+    return () => cancelAnimationFrame(animationFrame);
+  }, [isInView, end, duration]);
+
+  return <span ref={ref}>{count}{suffix}</span>;
+};
 
 const Hero = () => {
   return (
@@ -30,6 +61,11 @@ const Hero = () => {
               </h1>
               <p className="text-lg md:text-xl text-neutral-400 font-light tracking-tight">
                 {profile.title} <span className="text-neutral-600">·</span> {profile.location}
+              </p>
+              <p className="text-base md:text-lg text-neutral-500 font-light max-w-md">
+                Building production systems at 50M record scale •
+                Proven $10.5M+ cost optimization •
+                AWS & PySpark specialist
               </p>
             </div>
 
@@ -70,12 +106,56 @@ const Hero = () => {
           </motion.div>
         </div>
 
+        {/* Impact Metrics */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8, delay: 0.8, ease: [0.22, 1, 0.36, 1] }}
+          className="mt-20 grid grid-cols-1 md:grid-cols-3 gap-8"
+        >
+          <div className="space-y-2">
+            <div className="text-4xl md:text-5xl font-bold bg-gradient-to-r from-blue-400 to-blue-600 bg-clip-text text-transparent">
+              <CountUp end={50} suffix="M+" duration={2.5} />
+            </div>
+            <div className="text-sm text-neutral-500 uppercase tracking-wider">
+              Records Processed Daily
+            </div>
+            <div className="text-xs text-neutral-600">
+              Production-scale data systems
+            </div>
+          </div>
+
+          <div className="space-y-2">
+            <div className="text-4xl md:text-5xl font-bold bg-gradient-to-r from-green-400 to-emerald-600 bg-clip-text text-transparent">
+              $<CountUp end={10.5} suffix="M" duration={2.5} />
+            </div>
+            <div className="text-sm text-neutral-500 uppercase tracking-wider">
+              Annual Cost Savings
+            </div>
+            <div className="text-xs text-neutral-600">
+              Through optimization strategies
+            </div>
+          </div>
+
+          <div className="space-y-2">
+            <div className="text-4xl md:text-5xl font-bold bg-gradient-to-r from-purple-400 to-purple-600 bg-clip-text text-transparent">
+              <CountUp end={99.996} suffix="%" duration={2.5} />
+            </div>
+            <div className="text-sm text-neutral-500 uppercase tracking-wider">
+              Performance Optimization
+            </div>
+            <div className="text-xs text-neutral-600">
+              Comparison reduction (O(n²) → O(n))
+            </div>
+          </div>
+        </motion.div>
+
         {/* Bottom line */}
         <motion.div
           initial={{ scaleX: 0 }}
           animate={{ scaleX: 1 }}
-          transition={{ duration: 1.2, delay: 0.6, ease: [0.22, 1, 0.36, 1] }}
-          className="mt-20 h-px bg-gradient-to-r from-transparent via-white/10 to-transparent origin-left"
+          transition={{ duration: 1.2, delay: 1, ease: [0.22, 1, 0.36, 1] }}
+          className="mt-16 h-px bg-gradient-to-r from-transparent via-white/10 to-transparent origin-left"
         />
       </div>
     </section>

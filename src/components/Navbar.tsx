@@ -40,7 +40,7 @@ const Navbar = () => {
           </button>
 
           <div className="hidden md:flex items-center gap-8">
-            {['work', 'experience', 'contact'].map((section) => (
+            {['work', 'skills', 'experience', 'contact'].map((section) => (
               <button
                 key={section}
                 onClick={() => scrollToSection(section)}
