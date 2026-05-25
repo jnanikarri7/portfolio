@@ -8,7 +8,6 @@ const Navbar = () => {
     const handleScroll = () => {
       setIsScrolled(window.scrollY > 50);
     };
-
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
@@ -16,53 +15,46 @@ const Navbar = () => {
   const scrollToSection = (id: string) => {
     const element = document.getElementById(id);
     if (element) {
-      const offset = 100;
+      const offset = 80;
       const elementPosition = element.getBoundingClientRect().top;
       const offsetPosition = elementPosition + window.pageYOffset - offset;
-
-      window.scrollTo({
-        top: offsetPosition,
-        behavior: 'smooth'
-      });
+      window.scrollTo({ top: offsetPosition, behavior: 'smooth' });
     }
   };
 
   return (
     <nav
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-        isScrolled ? 'bg-slate-950/80 backdrop-blur-xl border-b border-white/5' : 'bg-transparent'
+      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
+        isScrolled
+          ? 'bg-[#0a0a0a]/70 backdrop-blur-2xl border-b border-white/[0.04]'
+          : 'bg-transparent'
       }`}
     >
-      <div className="max-w-6xl mx-auto px-6 lg:px-8">
-        <div className="flex items-center justify-between h-20">
-          {/* Logo */}
+      <div className="max-w-[1100px] mx-auto px-6 lg:px-8">
+        <div className="flex items-center justify-between h-16">
           <button
-            onClick={() => scrollToSection('hero')}
-            className="text-sm font-medium text-slate-400 hover:text-white transition-colors"
+            onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
+            className="text-[13px] font-medium text-white/90 hover:text-white transition-colors tracking-tight"
           >
-            JK
+            {profile.name}
           </button>
 
-          {/* Navigation Links */}
           <div className="hidden md:flex items-center gap-8">
-            <button
-              onClick={() => scrollToSection('work')}
-              className="text-sm text-slate-400 hover:text-white transition-colors"
-            >
-              Work
-            </button>
-            <button
-              onClick={() => scrollToSection('about')}
-              className="text-sm text-slate-400 hover:text-white transition-colors"
-            >
-              About
-            </button>
-            <a
-              href={`mailto:${profile.email}`}
-              className="text-sm text-slate-400 hover:text-white transition-colors"
-            >
-              Contact
-            </a>
+            {['work', 'experience', 'contact'].map((section) => (
+              <button
+                key={section}
+                onClick={() => scrollToSection(section)}
+                className="text-[13px] text-neutral-400 hover:text-white transition-colors duration-300 capitalize"
+              >
+                {section}
+              </button>
+            ))}
+          </div>
+
+          {/* Status indicator */}
+          <div className="flex items-center gap-2 md:hidden">
+            <div className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse" />
+            <span className="text-[11px] text-neutral-500">Available</span>
           </div>
         </div>
       </div>

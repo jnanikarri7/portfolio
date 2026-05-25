@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Instrument+Serif:ital@0;1&display=swap');
 
 @tailwind base;
 @tailwind components;
@@ -10,8 +10,8 @@
 }
 
 body {
-  background-color: #020617;
-  color: #f1f5f9;
+  background-color: #0a0a0a;
+  color: #fafafa;
   font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'SF Pro Display', 'Segoe UI', sans-serif;
 }
 
@@ -19,32 +19,66 @@ html {
   scroll-behavior: smooth;
 }
 
+.font-display {
+  font-family: 'Instrument Serif', Georgia, serif;
+}
+
 /* Custom scrollbar */
 ::-webkit-scrollbar {
-  width: 6px;
+  width: 4px;
 }
 
 ::-webkit-scrollbar-track {
-  background: #0f172a;
+  background: #0a0a0a;
 }
 
 ::-webkit-scrollbar-thumb {
-  background: #334155;
-  border-radius: 3px;
+  background: #333;
+  border-radius: 2px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: #475569;
+  background: #555;
 }
 
 /* Selection */
 ::selection {
-  background: #3b82f6;
-  color: #ffffff;
+  background: #fff;
+  color: #000;
 }
 
-/* Remove default focus outline and add custom */
+/* Focus */
 *:focus-visible {
-  outline: 2px solid #3b82f6;
+  outline: 1px solid #555;
   outline-offset: 2px;
+}
+
+/* Smooth gradient text */
+.gradient-text {
+  background: linear-gradient(135deg, #fff 0%, #999 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* Subtle glow */
+.glow {
+  box-shadow: 0 0 60px rgba(255, 255, 255, 0.03);
+}
+
+/* Glass card */
+.glass-card {
+  background: rgba(255, 255, 255, 0.02);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  backdrop-filter: blur(20px);
+}
+
+/* Hover lift */
+.hover-lift {
+  transition: transform 0.3s cubic-bezier(0.22, 1, 0.36, 1), box-shadow 0.3s ease;
+}
+
+.hover-lift:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
 }

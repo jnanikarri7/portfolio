@@ -2,14 +2,14 @@ export const profile = {
   name: 'Jnana Karri',
   fullName: 'Jnana Narasimhanand Karri',
   title: 'Senior Data Engineer',
-  subtitle: 'AWS Systems Engineer | AI/ML Data Engineering',
-  location: 'Frederick, Maryland, USA',
+  subtitle: 'AWS Systems Engineer · AI/ML Data Engineering',
+  location: 'Frederick, Maryland',
   email: 'jnana.narasimha@gmail.com',
   linkedin: 'https://www.linkedin.com/in/jnana-n',
   github: 'https://github.com/jnanikarri7',
 
   hero: {
-    greeting: "Hello, I'm Jnana — a cloud-native Data Engineer based in Frederick, Maryland. I build scalable data platforms, ETL pipelines, and lakehouse architectures across AWS, Spark, Redshift, and modern data engineering ecosystems.",
+    greeting: "Hello there! My name is Jnana and I'm a Senior Data Engineer based in Frederick, Maryland. In my 7+ years of experience I have designed and built cloud-native data platforms, ETL/ELT pipelines, lakehouse architectures, and data quality systems at companies like MDThink and Macquarie.",
     secondary: "Recently, I've been expanding my work toward AI-driven data quality, entity resolution, and AI/ML data engineering platforms."
   },
 
@@ -20,10 +20,36 @@ export const profile = {
 
   selectedWork: [
     {
+      id: 'entity-resolution',
+      title: 'AI Entity Resolution Platform',
+      subtitle: 'Production-scale deduplication using probabilistic matching • v1.0.0 Released',
+      year: '2024 – 2026',
+      description: [
+        "Built a production-scale entity resolution engine that deduplicates 50M customer records using Fellegi-Sunter probabilistic matching via Splink. Achieved 99.996% comparison reduction (O(n²) → O(n)) through multi-pass blocking while maintaining 92% recall.",
+        "Implemented 6 survivorship strategies, comprehensive testing (20+ unit tests), CI/CD pipeline, and full documentation. Released as v1.0.0 with 1,898 lines of production code. Designed for $0.54 per million records on AWS Glue.",
+        "→ View on GitHub: github.com/jnanikarri7/ai-entity-resolution-data-quality-platform"
+      ],
+      tech: ['PySpark', 'Python', 'Splink', 'AWS Glue', 'Apache Iceberg', 'Fellegi-Sunter', 'GitHub Actions', 'pytest'],
+      github: 'https://github.com/jnanikarri7/ai-entity-resolution-data-quality-platform'
+    },
+    {
+      id: 'address-validation',
+      title: 'AWS Lakehouse Address Validation',
+      subtitle: 'High-throughput pipeline with 82% cost reduction • $10.5M annual savings',
+      year: '2024 – 2026',
+      description: [
+        "Developed an address validation pipeline that reduces API costs from $35K to $6.3K per day (82% reduction) through intelligent caching and deduplication. Processes 10M+ addresses daily with DynamoDB caching (70% hit rate) and hash-based deduplication (40% reduction).",
+        "Built complete validation engine with SmartyStreets API integration, batch processing (100 addresses per request), exponential backoff retry logic, and production-ready error handling. Includes 35+ tests and CI/CD automation.",
+        "→ View on GitHub: github.com/jnanikarri7/aws-lakehouse-address-validation"
+      ],
+      tech: ['Python', 'PySpark', 'DynamoDB', 'SmartyStreets API', 'AWS Glue', 'Iceberg', 'GitHub Actions'],
+      github: 'https://github.com/jnanikarri7/aws-lakehouse-address-validation'
+    },
+    {
       id: 'mdthink',
       title: 'MDThink / Maryland Benefits',
       subtitle: 'Building cloud-native data platforms for public-sector analytics',
-      year: 'Current',
+      year: '2021 – Present',
       description: [
         "At MDThink, I work on AWS-based data engineering systems that support large-scale government benefits and healthcare-related analytics. My work involves designing and maintaining Glue/PySpark pipelines, Redshift warehouse layers, metadata-driven stored procedures, and medallion architecture patterns across Bronze, Silver, and Gold layers.",
         "The platform processes millions of records daily, supporting QuickSight dashboards, data analysts, and downstream business intelligence teams. I focus on building reliable, observable, and maintainable data systems that serve public-sector stakeholders."
@@ -31,30 +57,8 @@ export const profile = {
       tech: ['AWS Glue', 'PySpark', 'Redshift', 'S3', 'Athena', 'Lambda', 'Step Functions', 'Iceberg', 'QuickSight']
     },
     {
-      id: 'entity-resolution',
-      title: 'AI-Driven Entity Resolution and Data Quality Platform',
-      subtitle: 'Exploring AI-driven data quality and entity resolution',
-      year: '2024',
-      description: [
-        "A flagship AI/ML data engineering project focused on cloud lakehouse-based entity resolution and data quality automation. The goal is to combine probabilistic matching, supervised learning, weak supervision, and scalable PySpark processing to improve duplicate detection, record linkage, and trust in analytics platforms.",
-        "This project explores how machine learning can augment traditional data quality workflows, making entity resolution more accurate and scalable for enterprise data platforms."
-      ],
-      tech: ['PySpark', 'Python', 'AWS Glue', 'Iceberg', 'Entity Resolution', 'ML Pipelines', 'Data Quality']
-    },
-    {
-      id: 'address-verification',
-      title: 'Address Verification API Library',
-      subtitle: 'Standardizing and validating address data at scale',
-      year: '2023',
-      description: [
-        "A Python/PySpark AWS Glue library integrating address validation APIs to standardize, validate, and enrich address records. The design uses batching, caching, and structured enrichment to reduce API calls and improve downstream data quality.",
-        "The library processes millions of addresses efficiently while maintaining data quality standards and reducing costs through intelligent batching strategies."
-      ],
-      tech: ['Python', 'PySpark', 'AWS Glue', 'SmartyStreets API', 'Iceberg', 'S3']
-    },
-    {
       id: 'observability',
-      title: 'Redshift Lakehouse Observability Pipeline',
+      title: 'Redshift Lakehouse Observability',
       subtitle: 'Making data pipelines observable and reliable',
       year: '2023',
       description: [
@@ -69,14 +73,14 @@ export const profile = {
     {
       company: 'MDThink / Maryland Benefits',
       role: 'Data Engineer / AWS Systems Engineer',
-      period: 'Current',
-      description: 'Building AWS-based data platforms for government benefits and healthcare analytics using Glue, PySpark, Redshift, and lakehouse architecture patterns.'
+      period: '2021 – Present',
+      url: null
     },
     {
       company: 'Macquarie',
       role: 'Data / BI Engineer',
-      period: '2018 - 2021',
-      description: 'Developed BI and analytics solutions for financial data processing using Qlik, Tableau, Talend, and SQL.'
+      period: '2018 – 2021',
+      url: null
     }
   ],
 

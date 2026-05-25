@@ -269,7 +269,15 @@ Built with ❤️ using React, TypeScript, and Tailwind CSS
 
 **GitHub:** https://github.com/jnanikarri7/portfolio
 
-**Last Updated:** May 15, 2026
+**Last Updated:** May 25, 2026
+
+## 🆕 Recent Updates
+
+- **May 25, 2026:** Added GitHub portfolio projects with live links
+  - AI Entity Resolution Platform (v1.0.0 Released)
+  - AWS Lakehouse Address Validation ($10.5M annual savings)
+  - Projects now link directly to GitHub repositories
+  - Updated tech stacks and descriptions with quantified impact
 
 ---
 
