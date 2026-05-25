@@ -3,6 +3,10 @@ import { useInView } from 'framer-motion';
 import { useRef } from 'react';
 import { profile } from '../data/profile';
 import { ArrowUpRight } from 'lucide-react';
+import { CostSavingsChart } from './charts/CostSavingsChart';
+import { PerformanceChart } from './charts/PerformanceChart';
+import { EntityResolutionDiagram } from './diagrams/EntityResolutionDiagram';
+import { AddressValidationDiagram } from './diagrams/AddressValidationDiagram';
 
 const WorkItem = ({ work, index }: { work: typeof profile.selectedWork[0]; index: number }) => {
   const ref = useRef(null);
@@ -56,6 +60,20 @@ const WorkItem = ({ work, index }: { work: typeof profile.selectedWork[0]; index
           </p>
         ))}
       </div>
+
+      {/* Visual Diagrams and Charts */}
+      {work.id === 'entity-resolution' && (
+        <>
+          <EntityResolutionDiagram />
+          <PerformanceChart />
+        </>
+      )}
+      {work.id === 'address-validation' && (
+        <>
+          <AddressValidationDiagram />
+          <CostSavingsChart />
+        </>
+      )}
 
       {/* Tech Stack */}
       <div className="flex flex-wrap gap-2 pt-6 border-t border-white/[0.04]">

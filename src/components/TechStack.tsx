@@ -87,7 +87,7 @@ const TechStack = () => {
 
           {/* Skills by category */}
           <div className="space-y-12">
-            {categories.map((category, catIndex) => {
+            {categories.map((category) => {
               const categorySkills = techStack.filter(s => s.category === category);
               const startIndex = techStack.findIndex(s => s.category === category);
 

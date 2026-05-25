@@ -49,6 +49,14 @@ const Navbar = () => {
                 {section}
               </button>
             ))}
+            <a
+              href="/resume.pdf"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-[13px] px-4 py-2 rounded-full bg-white/[0.05] border border-white/[0.1] text-white hover:bg-white/[0.08] hover:border-white/[0.15] transition-all duration-300"
+            >
+              Resume
+            </a>
           </div>
 
           {/* Status indicator */}
