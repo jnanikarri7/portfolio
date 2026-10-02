@@ -8,7 +8,7 @@ import Navbar from './components/Navbar';
 
 function App() {
   return (
-    <div className="min-h-screen text-gray-900">
+    <div className="min-h-screen bg-[#fbfbfd] text-[#1d1d1f]">
       <Navbar />
 
       <main>
@@ -20,11 +20,11 @@ function App() {
         <Contact />
       </main>
 
-      <footer className="py-12 border-t border-gray-200 bg-white">
-        <div className="max-w-[1100px] mx-auto px-6 lg:px-8">
-          <div className="flex flex-col md:flex-row items-center justify-between gap-4 text-xs text-gray-500">
-            <p>&copy; {new Date().getFullYear()} Jnana Karri. All rights reserved.</p>
-            <p className="text-gray-400">Built with React & TypeScript</p>
+      <footer className="border-t border-black/[0.08] bg-[#fbfbfd]">
+        <div className="max-w-6xl mx-auto px-6 lg:px-8 py-10">
+          <div className="flex flex-col md:flex-row items-center justify-between gap-3 text-xs text-[#6e6e73]">
+            <p>&copy; {new Date().getFullYear()} Jnana Karri · Arlington, Virginia</p>
+            <p className="text-[#86868b]">Built with React & TypeScript</p>
           </div>
         </div>
       </footer>

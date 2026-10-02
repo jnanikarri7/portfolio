@@ -1,46 +1,48 @@
 import { motion } from 'framer-motion';
-import { useInView } from 'framer-motion';
-import { useRef } from 'react';
 import { profile } from '../data/profile';
 import { ArrowUpRight } from 'lucide-react';
 
 const Writing = () => {
-  const ref = useRef(null);
-  const isInView = useInView(ref, { once: true, margin: "-80px" });
-
   return (
-    <section id="writing" className="py-24 md:py-32 bg-gray-50">
-      <div className="max-w-[1100px] mx-auto px-6 lg:px-8">
+    <section id="writing" className="py-24 md:py-32 bg-[#fbfbfd] scroll-mt-24">
+      <div className="max-w-6xl mx-auto px-6 lg:px-8">
         <motion.div
-          ref={ref}
-          initial={{ opacity: 0, y: 30 }}
-          animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
+          initial={{ opacity: 0, y: 24 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: '-80px' }}
           transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
         >
-          <div className="text-center mb-16">
-            <h2 className="font-display text-4xl md:text-5xl font-bold text-gray-900 tracking-tight mb-4">
+          <div className="mb-14 md:mb-16">
+            <p className="text-xs font-semibold uppercase tracking-[0.2em] text-[#6e6e73] mb-4">
+              Notes
+            </p>
+            <h2 className="font-display text-4xl md:text-5xl lg:text-6xl font-semibold text-[#1d1d1f] tracking-[-0.03em] mb-5">
               Writing
             </h2>
-            <p className="text-lg text-gray-600">Technical notes on data engineering at scale</p>
+            <p className="text-lg text-[#6e6e73] max-w-2xl leading-[1.7]">
+              Technical notes on data engineering at scale
+            </p>
           </div>
 
-          <div className="space-y-4 max-w-3xl mx-auto">
+          <div className="space-y-4 max-w-3xl">
             {profile.writing.map((post) => (
               <a
                 key={post.url}
                 href={post.url}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="glass-card rounded-2xl p-6 md:p-7 flex items-center justify-between gap-4 group block"
+                className="glass-card rounded-3xl px-7 py-7 md:px-8 md:py-8 flex items-center justify-between gap-5 group block"
               >
-                <div className="space-y-1">
-                  <h3 className="text-lg font-semibold text-gray-900 group-hover:text-blue-700 transition-colors">
+                <div className="space-y-2">
+                  <p className="text-[11px] font-semibold uppercase tracking-[0.18em] text-[#6e6e73]">
+                    {post.source}
+                  </p>
+                  <h3 className="text-xl md:text-2xl font-medium text-[#1d1d1f] tracking-[-0.01em] group-hover:text-[#0071e3] transition-colors">
                     {post.title}
                   </h3>
-                  <p className="text-sm text-gray-500">Published on {post.source}</p>
                 </div>
-                <div className="w-10 h-10 rounded-xl border border-gray-200 bg-gray-50 flex items-center justify-center flex-shrink-0 group-hover:border-blue-500 transition-all duration-300">
-                  <ArrowUpRight size={18} className="text-gray-600 group-hover:text-blue-600 transition-colors" />
+                <div className="w-10 h-10 rounded-full border border-black/[0.08] bg-[#f5f5f7] flex items-center justify-center flex-shrink-0 group-hover:border-[#0071e3]/30 transition-all duration-300">
+                  <ArrowUpRight size={17} className="text-[#6e6e73] group-hover:text-[#0071e3] transition-colors" />
                 </div>
               </a>
             ))}
