@@ -30,20 +30,20 @@ export const CostSavingsChart = () => {
     <div className="w-full h-[200px] mt-6">
       <ResponsiveContainer width="100%" height="100%">
         <BarChart data={data} margin={{ top: 10, right: 10, left: 10, bottom: 10 }}>
-          <CartesianGrid strokeDasharray="3 3" stroke="rgba(255,255,255,0.05)" vertical={false} />
+          <CartesianGrid strokeDasharray="3 3" stroke="rgba(0,0,0,0.06)" vertical={false} />
           <XAxis
             dataKey="name"
-            stroke="rgba(255,255,255,0.3)"
-            tick={{ fill: 'rgba(255,255,255,0.5)', fontSize: 11 }}
-            axisLine={{ stroke: 'rgba(255,255,255,0.1)' }}
+            stroke="rgba(0,0,0,0.25)"
+            tick={{ fill: '#6b7280', fontSize: 11 }}
+            axisLine={{ stroke: 'rgba(0,0,0,0.1)' }}
           />
           <YAxis
-            stroke="rgba(255,255,255,0.3)"
-            tick={{ fill: 'rgba(255,255,255,0.5)', fontSize: 11 }}
-            axisLine={{ stroke: 'rgba(255,255,255,0.1)' }}
+            stroke="rgba(0,0,0,0.25)"
+            tick={{ fill: '#6b7280', fontSize: 11 }}
+            axisLine={{ stroke: 'rgba(0,0,0,0.1)' }}
             tickFormatter={(value) => `$${(value / 1000).toFixed(0)}K`}
           />
-          <Tooltip content={<CustomTooltip />} cursor={{ fill: 'rgba(255,255,255,0.05)' }} />
+          <Tooltip content={<CustomTooltip />} cursor={{ fill: 'rgba(0,0,0,0.04)' }} />
           <Bar dataKey="cost" radius={[8, 8, 0, 0]}>
             <Cell fill="#ef4444" />
             <Cell fill="#10b981" />
@@ -60,7 +60,7 @@ export const CostSavingsChart = () => {
           <span className="text-neutral-500">After: $6.3K/day</span>
         </div>
         <div className="flex items-center gap-2">
-          <span className="text-emerald-400 font-bold">82% Cost Reduction</span>
+          <span className="text-emerald-600 font-bold">82% modeled reduction</span>
         </div>
       </div>
     </div>

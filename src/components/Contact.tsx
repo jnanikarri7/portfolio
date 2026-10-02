@@ -16,7 +16,7 @@ const Contact = () => {
   ];
 
   return (
-    <section id="contact" className="py-24 md:py-32">
+    <section id="contact" className="py-24 md:py-32 bg-white">
       <div className="max-w-[1100px] mx-auto px-6 lg:px-8">
         <motion.div
           ref={ref}
@@ -27,10 +27,10 @@ const Contact = () => {
           {/* Large CTA */}
           <div className="glass-card rounded-3xl p-10 md:p-16 text-center space-y-10">
             <div className="space-y-4">
-              <h2 className="font-display text-5xl md:text-6xl lg:text-7xl italic text-white tracking-tight">
+              <h2 className="font-display text-5xl md:text-6xl lg:text-7xl font-bold text-gray-900 tracking-tight">
                 Let's connect
               </h2>
-              <p className="text-base md:text-lg text-neutral-400 font-light max-w-xl mx-auto leading-relaxed">
+              <p className="text-base md:text-lg text-gray-600 font-normal max-w-xl mx-auto leading-relaxed">
                 I'm currently focused on Senior Data Engineer, AI Data Engineer, and Cloud Data Engineer roles.
                 If my background aligns with what you're building, I'd love to hear from you.
               </p>
@@ -44,20 +44,20 @@ const Contact = () => {
                   href={link.href}
                   target={link.external ? '_blank' : undefined}
                   rel={link.external ? 'noopener noreferrer' : undefined}
-                  className="inline-flex items-center gap-2 px-5 py-2.5 rounded-full border border-white/[0.08] bg-white/[0.02] text-[13px] text-neutral-300 hover:text-white hover:border-white/20 hover:bg-white/[0.05] transition-all duration-300"
+                  className="inline-flex items-center gap-2 px-5 py-2.5 rounded-full border border-gray-300 bg-white text-[13px] font-medium text-gray-700 hover:text-gray-900 hover:border-gray-400 hover:bg-gray-50 transition-all duration-300"
                 >
                   {link.label}
-                  {link.external && <ArrowUpRight size={12} className="text-neutral-500" />}
+                  {link.external && <ArrowUpRight size={12} className="text-gray-400" />}
                 </a>
               ))}
             </div>
 
             {/* Target roles */}
-            <div className="pt-8 border-t border-white/[0.04]">
-              <p className="text-[11px] text-neutral-600 uppercase tracking-[0.15em] mb-3">
+            <div className="pt-8 border-t border-gray-200">
+              <p className="text-[11px] text-gray-500 uppercase tracking-[0.15em] mb-3">
                 Open to
               </p>
-              <p className="text-[13px] text-neutral-500">
+              <p className="text-[13px] text-gray-600">
                 {profile.targetRoles.join(' · ')}
               </p>
             </div>

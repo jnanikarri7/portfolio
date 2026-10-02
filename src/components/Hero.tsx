@@ -1,36 +1,5 @@
 import { motion } from 'framer-motion';
-import { useInView } from 'framer-motion';
-import { useRef, useEffect, useState } from 'react';
 import { profile } from '../data/profile';
-
-const CountUp = ({ end, suffix = '', duration = 2 }: { end: number; suffix?: string; duration?: number }) => {
-  const [count, setCount] = useState(0);
-  const ref = useRef(null);
-  const isInView = useInView(ref, { once: true });
-
-  useEffect(() => {
-    if (!isInView) return;
-
-    let startTime: number;
-    let animationFrame: number;
-
-    const animate = (currentTime: number) => {
-      if (!startTime) startTime = currentTime;
-      const progress = Math.min((currentTime - startTime) / (duration * 1000), 1);
-
-      setCount(Math.floor(progress * end));
-
-      if (progress < 1) {
-        animationFrame = requestAnimationFrame(animate);
-      }
-    };
-
-    animationFrame = requestAnimationFrame(animate);
-    return () => cancelAnimationFrame(animationFrame);
-  }, [isInView, end, duration]);
-
-  return <span ref={ref}>{count}{suffix}</span>;
-};
 
 const Hero = () => {
   return (
@@ -61,7 +30,7 @@ const Hero = () => {
                 {profile.title}
               </p>
               <p className="text-base md:text-lg text-gray-600 font-normal max-w-md leading-relaxed">
-                Building production systems at 50M+ record scale with proven cost optimization and AWS expertise
+                {profile.hero.valueProposition}
               </p>
             </div>
 
@@ -109,39 +78,21 @@ const Hero = () => {
           </motion.div>
         </div>
 
-        {/* Impact Metrics */}
+        {/* Proof chips — honest labels (designed / modeled where that is the truth) */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.8, ease: [0.22, 1, 0.36, 1] }}
-          className="mt-20 grid grid-cols-1 md:grid-cols-3 gap-6"
+          className="mt-20 flex flex-wrap gap-3"
         >
-          <div className="glass-card rounded-2xl p-8 space-y-2 border border-blue-100 bg-gradient-to-br from-blue-50 to-white">
-            <div className="text-5xl md:text-6xl font-bold text-blue-600">
-              <CountUp end={50} suffix="M+" duration={2.5} />
-            </div>
-            <div className="text-sm text-gray-700 font-semibold">
-              Records Processed
-            </div>
-          </div>
-
-          <div className="glass-card rounded-2xl p-8 space-y-2 border border-emerald-100 bg-gradient-to-br from-emerald-50 to-white">
-            <div className="text-5xl md:text-6xl font-bold text-emerald-600">
-              $<CountUp end={10.5} suffix="M" duration={2.5} />
-            </div>
-            <div className="text-sm text-gray-700 font-semibold">
-              Cost Savings
-            </div>
-          </div>
-
-          <div className="glass-card rounded-2xl p-8 space-y-2 border border-purple-100 bg-gradient-to-br from-purple-50 to-white">
-            <div className="text-5xl md:text-6xl font-bold text-purple-600">
-              <CountUp end={99.996} suffix="%" duration={2.5} />
-            </div>
-            <div className="text-sm text-gray-700 font-semibold">
-              Optimization
-            </div>
-          </div>
+          {profile.hero.proofChips.map((chip) => (
+            <span
+              key={chip}
+              className="text-sm font-semibold text-gray-800 px-4 py-2.5 rounded-full bg-white border border-gray-200 shadow-sm"
+            >
+              {chip}
+            </span>
+          ))}
         </motion.div>
 
         {/* Bottom line */}
