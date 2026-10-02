@@ -1,44 +1,46 @@
 import { motion } from 'framer-motion';
-import { useInView } from 'framer-motion';
-import { useRef } from 'react';
 import { profile } from '../data/profile';
 import { ArrowUpRight } from 'lucide-react';
 
 const Experience = () => {
-  const ref = useRef(null);
-  const isInView = useInView(ref, { once: true, margin: "-80px" });
-
   return (
-    <section id="experience" className="py-24 md:py-32 bg-white">
-      <div className="max-w-[1100px] mx-auto px-6 lg:px-8">
+    <section id="experience" className="py-24 md:py-32 bg-[#fbfbfd] scroll-mt-24">
+      <div className="max-w-6xl mx-auto px-6 lg:px-8">
         <motion.div
-          ref={ref}
-          initial={{ opacity: 0, y: 30 }}
-          animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
+          initial={{ opacity: 0, y: 24 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: '-80px' }}
           transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
         >
           {/* Section header */}
-          <h2 className="font-display text-4xl md:text-5xl font-bold text-gray-900 tracking-tight mb-16">
-            Experience
-          </h2>
+          <div className="mb-16 md:mb-20">
+            <p className="text-xs font-semibold uppercase tracking-[0.2em] text-[#6e6e73] mb-4">
+              Career
+            </p>
+            <h2 className="font-display text-4xl md:text-5xl lg:text-6xl font-semibold text-[#1d1d1f] tracking-[-0.03em]">
+              Experience
+            </h2>
+          </div>
 
           {/* Experience timeline */}
-          <div className="space-y-0">
+          <div className="border-l border-black/[0.08] pl-8 md:pl-12 space-y-2">
             {profile.experience.map((exp, index) => (
               <motion.div
                 key={index}
-                initial={{ opacity: 0, y: 20 }}
-                animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
-                transition={{ duration: 0.5, delay: index * 0.1 }}
-                className="group grid grid-cols-1 md:grid-cols-[1fr_2fr_auto] gap-2 md:gap-8 py-7 border-t border-gray-200 items-baseline hover:bg-gray-50 -mx-4 px-4 rounded-lg transition-colors"
+                initial={{ opacity: 0, y: 18 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true, margin: '-60px' }}
+                transition={{ duration: 0.5, delay: index * 0.08 }}
+                className="relative py-6"
               >
-                <h3 className="text-[15px] font-semibold text-gray-900">
+                <span className="absolute -left-[37px] md:-left-[53px] top-8 w-2 h-2 rounded-full bg-[#0071e3] ring-4 ring-[#fbfbfd]" />
+                <h3 className="text-2xl md:text-3xl font-medium text-[#1d1d1f] tracking-[-0.01em]">
                   {exp.company}
                 </h3>
-                <p className="text-[15px] text-gray-600">
+                <p className="text-base text-[#424245] mt-1.5">
                   {exp.role}
                 </p>
-                <span className="text-[13px] text-gray-500 font-mono whitespace-nowrap">
+                <span className="inline-block mt-3 text-xs font-mono uppercase tracking-[0.08em] text-[#6e6e73]">
                   {exp.period}
                 </span>
               </motion.div>
@@ -47,109 +49,81 @@ const Experience = () => {
 
           {/* Certifications */}
           <div className="mt-24">
-            <div className="flex items-center gap-4 mb-10">
-              <h3 className="text-[12px] font-semibold text-gray-500 uppercase tracking-[0.15em]">
+            <div className="flex items-center gap-5 mb-10">
+              <h3 className="text-xs font-semibold text-[#6e6e73] uppercase tracking-[0.2em]">
                 Certifications
               </h3>
-              <div className="flex-1 h-px bg-gray-200" />
-              <span className="text-[12px] text-gray-500">{profile.certifications.length}</span>
+              <div className="flex-1 h-px bg-black/[0.08]" />
+              <span className="text-xs font-mono text-[#6e6e73]">{profile.certifications.length}</span>
             </div>
 
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
               {profile.certifications.map((cert, index) => {
                 const verify = 'verify' in cert ? cert.verify : undefined;
                 return (
-                <motion.div
-                  key={cert.name}
-                  initial={{ opacity: 0, x: -10 }}
-                  animate={isInView ? { opacity: 1, x: 0 } : { opacity: 0, x: -10 }}
-                  transition={{ duration: 0.4, delay: 0.3 + index * 0.05 }}
-                  className="flex items-center gap-3 py-3 px-4 rounded-lg bg-gray-50 border border-gray-200"
-                >
-                  <div className="w-1.5 h-1.5 rounded-full bg-blue-600 flex-shrink-0" />
-                  <p className="text-[14px] text-gray-800">
-                    {cert.name}
-                    {verify && (
-                      <>
-                        {' '}
-                        <a
-                          href={verify}
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          className="inline-flex items-center gap-1 font-semibold text-blue-700 hover:text-blue-900"
-                        >
-                          Verify
-                          <ArrowUpRight size={12} />
-                        </a>
-                      </>
+                  <motion.div
+                    key={cert.name}
+                    initial={{ opacity: 0, y: 14 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true, margin: '-40px' }}
+                    transition={{ duration: 0.45, delay: index * 0.05 }}
+                    className="rounded-2xl bg-white border border-black/[0.08] px-5 py-5 shadow-sm transition-all duration-300 hover:-translate-y-1 hover:shadow-lg"
+                  >
+                    <div className="w-1.5 h-1.5 rounded-full bg-[#0071e3] mb-4" />
+                    <p className="text-[15px] font-medium text-[#1d1d1f] leading-snug">
+                      {cert.name}
+                    </p>
+                    {verify ? (
+                      <a
+                        href={verify}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="inline-flex items-center gap-1 mt-3 text-[13px] font-medium text-[#0071e3] hover:text-[#006edb] transition-colors"
+                      >
+                        Verify
+                        <ArrowUpRight size={13} />
+                      </a>
+                    ) : (
+                      <p className="mt-3 text-[13px] text-[#86868b]">Verified credential</p>
                     )}
-                  </p>
-                </motion.div>
+                  </motion.div>
                 );
               })}
             </div>
           </div>
 
-          {/* Skills */}
-          <div className="mt-24">
-            <div className="flex items-center gap-4 mb-10">
-              <h3 className="text-[12px] font-semibold text-gray-500 uppercase tracking-[0.15em]">
-                Tools & Technologies
-              </h3>
-              <div className="flex-1 h-px bg-gray-200" />
-            </div>
-
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-10">
-              {Object.entries(profile.skills).map(([category, tools], index) => (
-                <motion.div
-                  key={category}
-                  initial={{ opacity: 0, y: 15 }}
-                  animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 15 }}
-                  transition={{ duration: 0.5, delay: 0.4 + index * 0.05 }}
-                  className="space-y-3"
-                >
-                  <h4 className="text-[13px] font-semibold text-gray-900 tracking-tight">
-                    {category}
-                  </h4>
-                  <p className="text-[13px] text-gray-600 leading-relaxed">
-                    {tools.join(' · ')}
-                  </p>
-                </motion.div>
-              ))}
-            </div>
-          </div>
-
           {/* Education */}
           <div className="mt-24">
-            <div className="flex items-center gap-4 mb-10">
-              <h3 className="text-[12px] font-semibold text-gray-500 uppercase tracking-[0.15em]">
+            <div className="flex items-center gap-5 mb-10">
+              <h3 className="text-xs font-semibold text-[#6e6e73] uppercase tracking-[0.2em]">
                 Education
               </h3>
-              <div className="flex-1 h-px bg-gray-200" />
+              <div className="flex-1 h-px bg-black/[0.08]" />
             </div>
 
             <motion.div
-              initial={{ opacity: 0, y: 15 }}
-              animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 15 }}
-              transition={{ duration: 0.5, delay: 0.5 }}
-              className="glass-card rounded-xl p-6 space-y-3"
+              initial={{ opacity: 0, y: 18 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, margin: '-60px' }}
+              transition={{ duration: 0.55 }}
+              className="glass-card rounded-3xl p-8 md:p-10"
             >
-              <h4 className="text-[15px] font-semibold text-gray-900">
+              <h4 className="text-xl md:text-2xl font-medium text-[#1d1d1f] tracking-[-0.01em]">
                 {profile.education.degree}
               </h4>
-              <p className="text-[14px] text-gray-700">
+              <p className="text-[15px] text-[#424245] mt-2">
                 {profile.education.institution}
                 {profile.education.period ? ` · ${profile.education.period}` : ''}
                 {profile.education.gpa ? ` · GPA ${profile.education.gpa}` : ''}
               </p>
-              <p className="text-[13px] text-gray-500">
+              <p className="text-sm text-[#6e6e73] mt-1">
                 Concentration: {profile.education.concentration}
               </p>
-              <div className="flex flex-wrap gap-2 pt-3">
+              <div className="flex flex-wrap gap-2 pt-5">
                 {profile.education.focus.map((area) => (
                   <span
                     key={area}
-                    className="text-[11px] text-gray-600 px-2.5 py-1 rounded-full bg-gray-100 border border-gray-200"
+                    className="text-xs font-medium text-[#424245] px-3 py-1 rounded-full bg-[#f5f5f7]"
                   >
                     {area}
                   </span>

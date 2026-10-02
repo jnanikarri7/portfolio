@@ -18,7 +18,7 @@ const CustomTooltip = ({ active, payload }: any) => {
     return (
       <div className="bg-[#0a0a0a]/90 backdrop-blur-xl border border-white/[0.1] rounded-lg p-3 shadow-xl">
         <p className="text-white text-sm font-medium">{payload[0].payload.name}</p>
-        <p className="text-purple-400 text-lg font-bold mt-1">{payload[0].payload.label} comparisons</p>
+        <p className="text-[#0071e3] text-lg font-bold mt-1">{payload[0].payload.label} comparisons</p>
       </div>
     );
   }
@@ -56,11 +56,11 @@ export const PerformanceChart = () => {
           <span className="text-neutral-500">Naive: 2.5T comparisons</span>
         </div>
         <div className="flex items-center gap-2">
-          <div className="w-3 h-3 rounded bg-purple-500" />
+          <div className="w-3 h-3 rounded bg-[#0071e3]" />
           <span className="text-neutral-500">Optimized: 200M comparisons</span>
         </div>
         <div className="flex items-center gap-2">
-          <span className="text-purple-600 font-bold">Comparison-space reduction (design)</span>
+          <span className="text-[#0071e3] font-bold">Comparison-space reduction (design)</span>
         </div>
       </div>
     </div>
