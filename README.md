@@ -1,33 +1,29 @@
-# Portfolio Website - Jnana Narasimhanand Karri
+# Portfolio Website - Jnana Karri
 
 A modern, premium portfolio website showcasing my experience as a Senior Data Engineer with expertise in AWS, PySpark, Data Lakehouse Architecture, and AI/ML Data Engineering.
 
 ## 🚀 Tech Stack
 
-- **React 18** - Modern React with Hooks
+- **React 19** - Modern React with Hooks
 - **TypeScript** - Type-safe development
 - **Vite** - Lightning-fast build tool
-- **Tailwind CSS** - Utility-first CSS framework
+- **Tailwind CSS 4** - Utility-first CSS framework (via @tailwindcss/postcss)
 - **Framer Motion** - Smooth animations
 - **Lucide React** - Beautiful icon library
 
 ## ✨ Features
 
-- Premium Apple-inspired dark theme with glassmorphism
+- Light editorial theme with glassmorphism cards
 - Fully responsive design (mobile, tablet, desktop)
 - Smooth scroll animations and transitions
-- Sticky navigation with active section highlighting
+- Sticky navigation with section links (Work, Experience, Skills, Writing, Contact)
 - Organized sections:
-  - Hero with profile introduction
-  - About Me
-  - Core Skills (categorized)
-  - Professional Experience (timeline)
-  - AWS Certifications
-  - Featured Projects
-  - Education
-  - Career Focus & Target Roles
-  - Resume Highlights
-  - Contact Information
+  - Hero (name, title, value proposition, proof chips, resume download)
+  - Selected Projects (case studies: Problem, Ownership, Architecture, Approach, Results)
+  - Experience (roles, certifications, skills, education)
+  - Technical Expertise (grouped skill chips)
+  - Writing (technical notes)
+  - Contact (links and target roles)
 
 ## 🛠️ Local Development
 
@@ -146,12 +142,14 @@ npm run deploy
 
 Edit the following files to update your information:
 
-- **Contact Info**: `src/components/Hero.tsx` and `src/components/Contact.tsx`
-- **About Section**: `src/components/About.tsx`
-- **Skills**: `src/components/Skills.tsx`
-- **Experience**: `src/components/Experience.tsx`
-- **Projects**: `src/components/Projects.tsx`
-- **Certifications**: `src/components/Certifications.tsx`
+- **Personal data (name, experience, projects, skills, certifications, education)**: `src/data/profile.ts`
+- **Hero**: `src/components/Hero.tsx`
+- **Projects / Case Studies**: `src/components/SelectedWork.tsx`
+- **Skills**: `src/components/TechStack.tsx`
+- **Experience & Certifications**: `src/components/Experience.tsx`
+- **Writing**: `src/components/Writing.tsx`
+- **Contact**: `src/components/Contact.tsx`
+- **Navigation**: `src/components/Navbar.tsx`
 
 ### Add Your Resume
 
@@ -215,20 +213,20 @@ The portfolio is fully responsive and tested on:
 
 ```
 portfolio/
-├── public/              # Static assets
+├── public/              # Static assets (profile.jpg, resume.pdf, favicon)
 ├── src/
 │   ├── components/      # React components
-│   │   ├── Navigation.tsx
+│   │   ├── Navbar.tsx
 │   │   ├── Hero.tsx
-│   │   ├── About.tsx
-│   │   ├── Skills.tsx
+│   │   ├── SelectedWork.tsx
+│   │   ├── TechStack.tsx
 │   │   ├── Experience.tsx
-│   │   ├── Certifications.tsx
-│   │   ├── Projects.tsx
-│   │   ├── Education.tsx
-│   │   ├── CareerFocus.tsx
-│   │   ├── ResumeHighlights.tsx
-│   │   └── Contact.tsx
+│   │   ├── Writing.tsx
+│   │   ├── Contact.tsx
+│   │   ├── charts/      # Recharts visualizations used in case studies
+│   │   └── diagrams/    # SVG pipeline diagrams used in case studies
+│   ├── data/
+│   │   └── profile.ts   # All site content (single source of truth)
 │   ├── App.tsx          # Main app component
 │   ├── main.tsx         # App entry point
 │   └── index.css        # Global styles
@@ -252,10 +250,10 @@ This project is open source and available for personal use.
 
 ## 🤝 Contact
 
-**Jnana Narasimhanand Karri**  
-Senior Data Engineer | AWS Systems Engineer  
+**Jnana Karri**  
+Senior Data Engineer | AWS Lakehouse Platforms  
 📧 jnana.narasimha@gmail.com  
-📍 Frederick, Maryland, USA
+📍 Arlington, Virginia, USA
 
 ---
 
@@ -275,12 +273,12 @@ Built with ❤️ using React, TypeScript, and Tailwind CSS
 
 - **May 25, 2026:** Added GitHub portfolio projects with live links
   - AI Entity Resolution Platform (v1.0.0 Released)
-  - AWS Lakehouse Address Validation ($10.5M annual savings)
+  - AWS Lakehouse Address Validation (82% modeled API-cost reduction)
   - Projects now link directly to GitHub repositories
   - Updated tech stacks and descriptions with quantified impact
 
 ---
 
-**Built with:** React 18 • TypeScript • Tailwind CSS • Vite • Framer Motion
+**Built with:** React 19 • TypeScript • Tailwind CSS 4 • Vite • Framer Motion
 
 **Deployed on:** Vercel with automatic deployments from GitHub

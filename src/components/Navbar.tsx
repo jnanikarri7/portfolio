@@ -40,13 +40,19 @@ const Navbar = () => {
           </button>
 
           <div className="hidden md:flex items-center gap-6">
-            {['work', 'skills', 'contact'].map((section) => (
+            {[
+              { id: 'work', label: 'Work' },
+              { id: 'experience', label: 'Experience' },
+              { id: 'skills', label: 'Skills' },
+              { id: 'writing', label: 'Writing' },
+              { id: 'contact', label: 'Contact' },
+            ].map((section) => (
               <button
-                key={section}
-                onClick={() => scrollToSection(section)}
-                className="text-sm font-medium text-gray-600 hover:text-gray-900 transition-colors duration-300 capitalize"
+                key={section.id}
+                onClick={() => scrollToSection(section.id)}
+                className="text-sm font-medium text-gray-600 hover:text-gray-900 transition-colors duration-300"
               >
-                {section}
+                {section.label}
               </button>
             ))}
             <a
